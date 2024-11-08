@@ -286,7 +286,6 @@ for (let i = 0; i < n; i++) {
 }
 
 document.write(`No conjunto de números [${nums.sort((a, b) => a - b)}] o menor valor, o maior valor e a soma dos valores são, respectivamente: ${Math.min(...nums)}, ${Math.max(...nums)}, ${soma}.`);
-// meu amigo... essa eu demorei, viu. começou a dar tudo errado, aí eu me desesperei e taquei uma função.
 21)let calcularDeNovo = true;
 
 while (calcularDeNovo) {
@@ -620,3 +619,4 @@ for (let i = inicio; i <= final; i++) {
 42) 
 43)
 /*
+//obs==>funcoes para economizar espaço de codigo
