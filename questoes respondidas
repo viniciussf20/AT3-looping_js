@@ -506,6 +506,13 @@ for(var i =1;i<=50;i++){
   document.writeln(`${i} produtos = RS ${i * unico}<br>`)
 }
 31) 
+document.writeln("----------------------------------Panificadora Pão de Ontem - Tabela de preços--------------------------------<br><br>")
+let unico =parseFloat(prompt("insira o valor do pão:")).toFixed(2)
+for(var i =1;i<=50;i++){
+  document.writeln(`${i} - RS ${i * unico}<br>`)
+}
+
+
 32) 
 33) 
 34) 
