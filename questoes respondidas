@@ -11,7 +11,7 @@ document.write(`Sua nota: ${nota}`);
     document.writeln(i)
 }
 3)let password;
-let userName;
+let userName; 
 
 do {
     userName = prompt('Digite o seu nome de usuário: ');
