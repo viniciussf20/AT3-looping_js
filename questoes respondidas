@@ -513,7 +513,22 @@ for(var i =1;i<=50;i++){
 }
 
 
-32) 
+32)
+function Troco(val,tot){
+  return val-tot;
+}
+let total= 0
+for(var i =1;i<=10;i++){
+  let valor =parseFloat(prompt("insira o valor do produto:"))
+  total+=valor
+  if(valor == 0){
+    break 
+  }
+  document.writeln(`Produto ${i}: R$${valor}<br>`)
+}   
+let pago = parseFloat(prompt("Quanto que o cliente pagou?"))
+document.writeln(`Total = R$ ${total}<br> Pago = R$${pago} <br> Troco = R$${Troco(pago,total)} `) 
+
 33) 
 34) 
 35) 
