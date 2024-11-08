@@ -530,9 +530,88 @@ let pago = parseFloat(prompt("Quanto que o cliente pagou?"))
 document.writeln(`Total = R$ ${total}<br> Pago = R$${pago} <br> Troco = R$${Troco(pago,total)} `) 
 
 33) 
-34) 
-35) 
-36) 
+function Primos(valor) {
+  if (valor <= 1) return false;
+  if (valor === 2) return true;
+  if (valor % 2 === 0) return false;
+  
+  for (let i = 3; i <= Math.sqrt(valor); i += 2) {
+    if (valor % i === 0) return false;
+  }
+  
+  return true;
+}
+
+let numero = parseInt(prompt("Digite um número inteiro:"));
+
+if (Primos(numero)) {
+  document.writeln(`O número ${numero} é primo.`);
+} else {
+  document.writeln(`O número ${numero} não é primo.`);
+}
+
+34)
+function Primos(valor) {
+  if (valor <= 1) return false;
+  if (valor === 2) return true;
+  if (valor % 2 === 0) return false;
+
+  for (let i = 3; i <= Math.sqrt(valor); i += 2) {
+    if (valor % i === 0) return false;
+  }
+
+  return true;
+}
+
+let limite = parseInt(prompt("Digite um número inteiro:"));
+let listaPrimos = [];
+
+for (let i = 2; i <= limite; i++) {
+  if (Primos(i)) {
+    listaPrimos.push(i);
+  }
+}
+
+document.writeln(`Números primos entre 1 e ${limite}: ${listaPrimos.join(', ')}`);
+
+35) function Tabu(fixo,multi){
+  return fixo*multi;
+}
+let fix =parseInt(prompt("qual valor que vc quer saber a tabuada?"))
+let inicio =parseInt(prompt("por qual inteiro se inicia?"))
+let final =parseInt(prompt("por qual inteiro deve finalizar?"))
+alert("montar tabuada de: "+ fix +"\ncomeçar por: "+inicio+ "\nterminar em: "+final)
+document.writeln(`montarei a tabuada de ${fix} <br> começando por ${inicio} e terminarei em ${final}<br>`)
+for(let i =inicio;i<=final;i++){
+document.writeln(`${fix} x ${i} = ${Tabu(fix,i)}<br>`)
+} 
+36) function Tabu(fixo, multi) {
+  return fixo * multi;
+}
+
+let fix = parseInt(prompt("Qual valor que você quer saber a tabuada?"));
+
+let inicio, final; 
+ 
+while (true) {
+  inicio = parseInt(prompt("Por qual inteiro deve começar?"));
+  final = parseInt(prompt("Por qual inteiro deve terminar?"));
+  
+  if (inicio > final) {
+    alert("Início não pode ser maior que final. Por favor, insira novamente.");
+  } else {
+    break;
+  }
+}
+
+alert("Montar tabuada de: " + fix + "\nComeçar por: " + inicio + "\nTerminar em: " + final);
+document.writeln(`Montarei a tabuada de ${fix} <br> Começando por ${inicio} e terminarei em ${final}<br>`);
+
+for (let i = inicio; i <= final; i++) {
+  document.writeln(`${fix} x ${i} = ${Tabu(fix, i)}<br>`);
+}
+
+
 37) 
 38) 
 39) 
