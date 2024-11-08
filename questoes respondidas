@@ -479,8 +479,32 @@ document.write(`Votos no candidato A: ${eleitorA} <br> Votos no candidato B: ${e
     alert(`A média de alunos por turma é ${media.toFixed(2)}`);
 }
 mediaAlunosPorTurma();
-29) 
-30) 
+29) function Valormed(total, num) {
+  return total / num;
+}
+
+let cds = parseInt(prompt("Quantos CDs tem em sua coleção?"));
+let cdtotal = 0;
+
+for (let i = 1; i <= cds; i++) {
+  let valor = parseFloat(prompt(`Quanto custou o CD ${i}?`));
+  if (isNaN(valor) || valor === null) {
+    alert("Valor inválido! Insira um número válido.");
+    i--;
+    continue;
+  }
+  
+  cdtotal += valor;
+}
+
+document.writeln(`Total investido: R$${cdtotal}<br>Valor médio para cada CD: 
+R$${Valormed(cdtotal, cds)}`);
+
+30) document.writeln("---------------------------------------- Lojas Quase Dois - Tabela de preços ----------------------------------<br><br>")
+let unico = 1.99.toFixed(2)
+for(var i =1;i<=50;i++){
+  document.writeln(`${i} produtos = RS ${i * unico}<br>`)
+}
 31) 
 32) 
 33) 
