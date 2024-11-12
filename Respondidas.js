@@ -610,13 +610,197 @@ for (let i = inicio; i <= final; i++) {
   document.writeln(`${fix} x ${i} = ${Tabu(fix, i)}<br>`);
 }
 
+ 37) 
+function analiseAcademiaClientes() {
+    let maior = {codigo: null, altura: 0};
+    let menor = {codigo: null, altura: Infinity};
+    let maisPesado = {codigo: null, peso: 0};
+    let maisLeve = {codigo: null, peso: Infinity};
+    
+    let somaAlturas = 0;
+    let somaPesos = 0;
+    let totalClientes = 0;
 
-37) 
+    while(true) {
+        let codigo = parseInt(prompt("Digite o código do cliente (0 para encerrar): "));
+        if (codigo === 0) break;
+        
+        let altura = parseFloat(prompt("Digite a altura do cliente em metros: "));
+        let peso = parseFloat(prompt("Digite o peso do cliente em kg: "));
+
+        somaAlturas += altura;
+        somaPesos += peso;
+        totalClientes++;
+
+        if(altura > maior.altura) { maior = {codigo, altura}; }
+        if(altura < menor.altura) { menor = {codigo, altura}; }
+        if(peso > maisPesado.peso) { maisPesado = {codigo, peso}; }
+        if(peso < maisLeve.peso) { maisLeve = {codigo, peso}; }
+    }
+    
+    const mediaAltura = somaAlturas / totalClientes;
+    const mediaPeso = somaPesos / totalClientes;
+    
+    document.write(`Cliente mais alto: Código ${maior.codigo}, Altura ${maior.altura}m.<br>`);
+    document.write(`Cliente mais baixo: Código ${menor.codigo}, Altura ${menor.altura}m.<br>`);
+    document.write(`Cliente mais pesado: Código ${maisPesado.codigo}, Peso ${maisPesado.peso}kg.<br>`);
+    document.write(`Cliente mais leve: Código ${maisLeve.codigo}, Peso ${maisLeve.peso}kg.<br>`);
+    document.write(`Média de altura: ${mediaAltura.toFixed(1)}m.<br>`);
+    document.write(`Média de peso: ${mediaPeso.toFixed(1)}kg.<br>`);
+}
+
+analiseAcademiaClientes();
+
 38) 
-39) 
+function calcularSalario(anoContratacao, anoAtual, salarioInicial) {
+    let salario = salarioInicial;
+    let aumento = 1.5 / 100;
+
+    for(let ano = anoContratacao + 1; ano <= anoAtual; ano++) {
+        salario += salario * aumento;
+        aumento *= 2;
+    }
+    return salario;
+}
+
+const salarioInicial = parseFloat(prompt('Digite o salário inicial do funcionário: '));
+const anoContratacao = parseInt(prompt('Digite o ano de contratação do funcionário: '));
+const anoAtual = new Date().getFullYear();
+
+const salarioAtual = calcularSalario(anoContratacao, anoAtual, salarioInicial);
+alert(`O salário atual do funcionário é: R$${salarioAtual.toFixed(2)}`);
+
 40) 
+function calcularDividaEExibirTabela(valorEmprestimo) {
+    const opcoesParcelas = [
+        {parcelas: 1, juros: 0},
+        {parcelas: 3, juros: 10},
+        {parcelas: 6, juros: 15},
+        {parcelas: 9, juros: 20},
+        {parcelas: 12, juros: 25}
+    ];
+
+    document.write('Valor da Dívida\t|\tValor dos Juros\t|\tQuantidade de Parcelas\t|\tValor da Parcela<br>');
+    document.write('<hr>');
+
+    opcoesParcelas.forEach(opcao => {
+        const valorJuros = valorEmprestimo * (opcao.juros / 100);
+        const valorTotal = valorEmprestimo + valorJuros;
+        const valorParcela = valorTotal / opcao.parcelas;
+
+        document.write(
+            `R$ ${valorTotal.toFixed(2)}\t|\tR$ ${valorJuros.toFixed(2)}\t|\t${opcao.parcelas}\t|\tR$ ${valorParcela.toFixed(2)}<br>`
+        );
+    });
+}
+
+const valorEmprestimo = parseFloat(prompt('Digite o valor do empréstimo: '));
+calcularDividaEExibirTabela(valorEmprestimo);
+
 41) 
-42) 
+const menu = {
+    100: { item: "Cachorro Quente", preco: 1.2 },
+    101: { item: "Bauru Simples", preco: 1.3 },
+    102: { item: "Bauru com Ovo", preco: 1.5 },
+    103: { item: "Hambúrguer", preco: 1.2 },
+    104: { item: "Cheeseburguer", preco: 1.3 },
+    105: { item: "Refrigerante", preco: 1.0 }
+};
+
+let totalPedido = 0;
+
+while (true) {
+    let codigo = prompt("Digite o código do item (ou digite 'sair' para encerrar): ");
+    if (codigo.toLowerCase() === "sair") break;
+
+    codigo = parseInt(codigo);
+
+    if (!menu[codigo]) {
+        alert("Código inválido! Tente novamente.");
+        continue;
+    }
+
+    let quantidade = parseInt(prompt(`Digite a quantidade de ${menu[codigo].item}:`));
+    if (isNaN(quantidade) || quantidade <= 0) {
+        alert("Quantidade inválida! Tente novamente.");
+        continue;
+    }
+
+    let valorItem = menu[codigo].preco * quantidade;
+    totalPedido += valorItem;
+
+    alert(
+        `Item: ${menu[codigo].item}\nQuantidade: ${quantidade}\nValor a ser pago: R$ ${valorItem.toFixed(2)}`
+    );
+}
+
+alert(`Total geral do pedido: R$ ${totalPedido.toFixed(2)}`);
+
+42)
+const eleicaoCandidatos = {
+  1: "José",
+  2: "João",
+  3: "Maria",
+  4: "Ana",
+  5: "Nulo",
+  6: "Branco"
+};
+let eleicaoVotos = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+let totalVotosEleicao = 0;
+
+while (true) {
+  let codigoVoto = parseInt(prompt("Digite o código do voto (1-4 para candidatos, 5 para Nulo, 6 para Branco, 0 para encerrar):"));
+  if (codigoVoto === 0) break;
+  if (!eleicaoVotos.hasOwnProperty(codigoVoto)) {
+    alert("Código inválido! Tente novamente.");
+    continue;
+  }
+  eleicaoVotos[codigoVoto]++;
+  totalVotosEleicao++;
+}
+
+let percentualNulosEleicao = (eleicaoVotos[5] / totalVotosEleicao) * 100;
+let percentualBrancosEleicao = (eleicaoVotos[6] / totalVotosEleicao) * 100;
+
+alert(`Resultado da eleição:
+Candidato José: ${eleicaoVotos[1]} votos
+Candidato João: ${eleicaoVotos[2]} votos
+Candidata Maria: ${eleicaoVotos[3]} votos
+Candidata Ana: ${eleicaoVotos[4]} votos
+Votos Nulos: ${eleicaoVotos[5]} votos
+Votos em Branco: ${eleicaoVotos[6]} votos
+Percentual de Votos Nulos: ${percentualNulosEleicao.toFixed(2)}%
+Percentual de Votos em Branco: ${percentualBrancosEleicao.toFixed(2)}%`);
+
 43)
+const provaGabarito = ['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D', 'A', 'B'];
+let totalAlunosProva = 0;
+let maiorAcertos = 0;
+let menorAcertos = 10;
+let somaNotasProva = 0;
+
+do {
+  let acertosAluno = 0;
+  for (let i = 0; i < 10; i++) {
+    let respostaAluno = prompt(`Questão ${i + 1}: (A, B, C, ou D)`).toUpperCase();
+    if (respostaAluno === provaGabarito[i]) acertosAluno++;
+  }
+  
+  totalAlunosProva++;
+  somaNotasProva += acertosAluno;
+  if (acertosAluno > maiorAcertos) maiorAcertos = acertosAluno;
+  if (acertosAluno < menorAcertos) menorAcertos = acertosAluno;
+  
+  alert(`Você acertou ${acertosAluno} questões e sua nota é: ${acertosAluno}`);
+} while (prompt("Outro aluno vai utilizar o sistema? (S/N)").toUpperCase() === "S");
+
+let mediaNotasProva = somaNotasProva / totalAlunosProva;
+
+alert(`Relatório Final:
+- Maior Acerto: ${maiorAcertos}
+- Menor Acerto: ${menorAcertos}
+- Total de Alunos: ${totalAlunosProva}
+- Média das Notas da Turma: ${mediaNotasProva.toFixed(2)}`);
+
 /*
 //obs==>funcoes para economizar espaço de codigo
